@@ -10,33 +10,62 @@
 
       <script type="text/javascript" src="geometria.js"></script>
 </head>
+    
+<body class="components">
 
-<body>
-  <h1>Geometries Basiques</h1>
-  <button  class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-  <i class="material-icons">crop landscope</i>Geometries Planes
-</button>
-<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-<!--  <i class="material-icons">add</i> -->
-</button>
+    
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class=" mdl-layout__header mdl-color--blue-900 mdl-color-text--grey-100">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title"><t>Geometries Basiques</t></span>
+          <div class="mdl-layout-spacer"></div>
+             <nav class="mdl-navigation mdl-layout--large-screen-only">
 
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
-    <canvas id="tauler" width="320" height="320"></canvas>
+                  <!--BUTTONS SUPERIORS-->
+                <a class="mdl-navigation__link" href="">
+                    <button  class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                    <i class="material-icons"></i>2D
+                    </button>
+                </a>
+
+                <a class="mdl-navigation__link" href="">
+                    <button  class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                    <i class="material-icons"></i>3D
+                    </button>
+                </a>
+
+              </nav>
+          
+        </div>
+      </header>
+
+<!--DRAWER LATERAL-->
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Figures:</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Cuadrat (2D)</a>
+      <a class="mdl-navigation__link" href="">Cub (3D)</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+    </nav>
+  </div>    
+    
+    
+    <!--MAIN. AQUI VA TOT LO QUE VULGUIS POSAR A DINS-->
+  <main class="mdl-layout__content">
+    <div class="page-content">AQUI AQUI
+      
+        <canvas id="tauler" width="320" height="320"></canvas>
+  
+
+    </div>
+  </main>
+</div>
+  
+        
+        
 </body>
 
 </html>
