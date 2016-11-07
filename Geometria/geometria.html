@@ -2,20 +2,26 @@
 <html>
 <head>
     <title>Objectes geometrics.</title>
-      <link rel="stylesheet" type="text/css" href="Style/style.css">
 
+      <!--Style MDL-->
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        
+      <!-- MDL Scripts-->
       <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-
-      <script type="text/javascript" src="geometria.js"></script>
+    
+      <!--MDL Theme-->
+      <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.light_blue-red.min.css" />
+    
+      <!--Local Style-->
+      <link rel="stylesheet" type="text/css" href="../Style/style.css">
 </head>
 
 <body class="components">
 
 
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <header class=" mdl-layout__header mdl-color--blue-900 mdl-color-text--grey-100">
+      <header class=" mdl-layout__header mdl-color-text--grey-100">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title"><t>Geometries Basiques</t></span>
           <div class="mdl-layout-spacer"></div>
@@ -51,7 +57,7 @@
               Cuadrat
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Quadrat" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -63,7 +69,7 @@
               Triangle
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Triangle" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -75,7 +81,7 @@
               Cercle
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Cercle" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -87,7 +93,7 @@
               Rectangle
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Rectangle" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -99,7 +105,7 @@
               Trapezi
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Trapezi" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -111,7 +117,7 @@
               Rombe
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Rombe" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -123,7 +129,7 @@
               Pentagon
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Pentagon" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -135,7 +141,7 @@
               Hexagon
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Hexagon" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -147,7 +153,7 @@
               Heptagon
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Heptagon" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -159,7 +165,7 @@
               Cub
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id="Cub" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -171,7 +177,7 @@
               Con
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id = "Con" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -183,7 +189,7 @@
               Cilindre
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id = "Cilindre" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -195,7 +201,7 @@
               Esfera
           </span>
           <span class="mdl-list__item-secondary-action">
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+              <button id = "Esfera" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="material-icons">trending_flat</i>
               </button>
           </span>
@@ -203,19 +209,20 @@
       </a>
     </nav>
   </div>
-
-
+    
     <!--MAIN. AQUI VA TOT LO QUE VULGUIS POSAR A DINS-->
   <main class="mdl-layout__content">
-    <div class="page-content">AQUI AQUI
+    <div class="page-content">
 
-        <canvas id="tauler" width="320" height="320"></canvas>
+        <canvas id="tauler" width="900" height="600"></canvas>
 
 
     </div>
   </main>
 </div>
-
+        
+ <!--Local Script-->    
+<script type="text/javascript" src="geometria.js"></script>
 
 
 </body>
