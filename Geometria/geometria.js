@@ -7,15 +7,18 @@ function dibuixar() {
 
     if (canvas.getContext) {
       var   ctx = canvas.getContext('2d');
-
-        ctx.save();
-
-
-
+      ctx.fillStyle="black";
+      ctx.strokeStyle="yellow";
+        
+        var gradient=ctx.createLinearGradient(0,0,canvas.width,0);
+        gradient.addColorStop("0","magenta");
+        gradient.addColorStop("0.5","blue");
+        gradient.addColorStop("1.0","red");
+        
         pintarCuadrat(ctx);
         pintarTriangle(ctx);
         pintarCercle(ctx);
-        pintarRectangle(ctx);
+        pintarRectangle(ctx, canvas);
         pintarTrapezi(ctx);
         pintarRombe(ctx);
         pintarPentagon(ctx);
@@ -23,11 +26,7 @@ function dibuixar() {
         pintarHeptagon(ctx);
         //pintarTest(ctx);
 
-
         }
-
-
-
 
 }
 
@@ -51,13 +50,8 @@ ctx.restore();
 function pintarCuadrat(ctx){
 
   ctx.lineWidth="5";
-  ctx.strokeStyle="green";
   ctx.rect(100,100,50,50);
   ctx.fill();
-
-
-
-
 }
 
 function pintarTriangle(ctx){
@@ -70,9 +64,7 @@ function pintarTriangle(ctx){
     ctx.lineTo(150, 150);
     ctx.closePath();
     ctx.lineWidth = 10;
-    ctx.strokeStyle = '#666666';
     ctx.stroke();
-    ctx.fillStyle = "#FFCC00";
     ctx.fill();
 
     ctx.restore();
@@ -98,12 +90,13 @@ function  pintarCercle(ctx){
 
  function pintarRectangle(ctx){
 
-    ctx.save();
+    ctx.save();     
     ctx.translate(5, 500);
 
     ctx.lineWidth="5";
-    ctx.strokeStyle="green";
     ctx.rect(50,80,150,80);
+    ctx.stroke();
+    ctx.fillStyle=gradient;
     ctx.fill();
 
     ctx.restore();
@@ -122,6 +115,7 @@ function  pintarCercle(ctx){
     ctx.lineTo(150, 100);
     ctx.lineTo(-50,100);
     ctx.closePath();
+    ctx.stroke();
     ctx.fill();
 
     ctx.restore();
@@ -141,6 +135,7 @@ function  pintarCercle(ctx){
    ctx.lineTo(100, 100);
    ctx.closePath();
    ctx.fill();
+   ctx.stroke();
 
    ctx.restore();
 
@@ -196,7 +191,6 @@ function  pintarHexagon(ctx){
 
     ctx.moveTo(0,0);
     ctx.lineWidth="5";
-    ctx.strokeStyle="green";
     ctx.rect(0,0,50,50);
     ctx.fill();
 
@@ -215,7 +209,7 @@ function clear(){
 
   if (canvas.getContext) {
 var   ctx = canvas.getContext('2d');
-ctx.clearRect(0,0,2000,2000);
+ctx.clearRect(0,0,3000,1500);
 
 }
 
@@ -278,7 +272,7 @@ ctx.fillText("Rombe: Per = 4 * Costat; Area = Base * AlturaInterior",180,900);
 }
 function textPentagon(ctx){
 ctx.font = "12px Arial";
-ctx.fillText("Pentagon: Per = 5 * Costat",180,1050);
+ctx.fillText("Pentagon: Per = 5 * Costat; Area = (Per * Apotema) / 2",180,1050);
 
 }
 function textHexagon(ctx){
@@ -293,45 +287,58 @@ ctx.fillText("Heptagon: Per = 7 * Costat; Area = (7 * LCostat * Apotema)/2",180,
 }
 
 function ferNegatiu(){
+  // dibuixar(); -- Com està, el botó fa el negatiu del canvas.
+  // Si descomentem dibuixar(), el botó pinta automàticament el canvas ja en negatiu
   var canvas = document.getElementById('tauler');
-
-
-  if (canvas.getContext) {
-var   context = canvas.getContext('2d');
-var destX = 0;
-var destY = 0;
-
-var imageData = context.getImageData(0, 210, canvas.width,canvas.height);
-var pixels = imageData.data;
-for (var i = 0; i < pixels.length; i += 4) {
-pixels[i] = 255 - pixels[i]; // red
-pixels[i+1] = 255 - pixels[i+1]; // green
-pixels[i+2] = 255 - pixels[i+2]; // blue
-
-// i+3 es alpha
+  if(canvas.getContext){
+    var context = canvas.getContext('2d');
+    var imageData = context.getImageData(0,0,canvas.width,canvas.height);
+    var pixels = imageData.data;
+    for (var i = 0; i < pixels.length; i += 4) {
+      pixels[i] = 255 - pixels[i]; // red
+      pixels[i+1] = 255 - pixels[i+1]; // green
+      pixels[i+2] = 255 - pixels[i+2]; // blue
+    }
+    context.putImageData(imageData,0,0);
   }
 }
-  }
+
+
 
 function ferBN(){
-
   var canvas = document.getElementById('tauler');
+  if(canvas.getContext){
+    var context = canvas.getContext('2d');
+    var imageData = context.getImageData(0,0,canvas.width,canvas.height);
+    var pixels = imageData.data;
+    for (var i = 0; i < pixels.length; i += 4) {
+        var bn = pixels[i] * 0.3 + pixels[i+1] * 0.59 + pixels[i+2] * 0.11;
+        //Luminace ALgorith. És un prorrateig per determinar si hem de fer un pixel blanc o negre, no hi ha manera obvia de fer-ho,
+        //ja que per blanc necessitem els 3 components RGB=0 i pel negre els 3 RGB= 255.
+        //Per tant hem de decidir si fer un pixel blanc o negre basat en el seu color inicial:
+        //Aquest prorrateig té en compte la percepció de la intensitat dels colors de l'ull humà.
+        if (bn > 127){
+          pixels[i]=255;
+          pixels[i+1]=255;
+          pixels[i+2]=255;
+        }
+        else{
+          pixels[i]=0;
+          pixels[i+1]=0;
+          pixels[i+2]=0;
+        }
+    }
+    /*
+    for (var i = 0; i < pixels.length; i += 4) {
+    	if(pixels[i]> 127){pixels[i] = 255;}else if((pixels[i]< 127)||(pixels[i]==127)){pixels[i] = 0;}
+    	if(pixels[i+1]> 127){pixels[i+1] = 255;}else if((pixels[i+1]< 127)||(pixels[i+1]==127)){pixels[i+1] = 0;}
+    	if(pixels[i+2]> 127){pixels[i+2] = 255;}else if((pixels[i+2]< 127)||(pixels[i+2]==127)){pixels[i+2] = 0;}
 
-
-  if (canvas.getContext) {
-var   context = canvas.getContext('2d');
-var destX = 0;
-var destY = 0;
-
-var imageData = context.getImageData(0, 210, canvas.width,canvas.height);
-var pixels = imageData.data;
-for (var i = 0; i < pixels.length; i += 4) {
-	if(pixels[i]> 127){pixels[i] = 255;}else if(pixels[i]< 127){pixels[i] = 0;}
-	if(pixels[i+1]> 127){pixels[i+1] = 255;}else if(pixels[i+1]< 127){pixels[i+1] = 0;}
-	if(pixels[i+2]> 127){pixels[i+2] = 255;}else if(pixels[i+2]< 127){pixels[i+2] = 0;}
-
-}}
+    } */
+    context.putImageData(imageData,0,0);
+  }
 }
+
 
 function downloadCanvas() {
   var canvas = document.getElementById('tauler');
@@ -345,8 +352,8 @@ window.location.href=image;
 document.getElementById("Guardar").addEventListener("click", function() {
     downloadCanvas();
 }, false);
-//document.getElementById("BN").addEventListener("click", ferBN);
-//document.getElementById("N").addEventListener("click", ferNegatiu);
+document.getElementById("BN").addEventListener("click", ferBN);
+document.getElementById("N").addEventListener("click", ferNegatiu);
 document.getElementById("2D").addEventListener("click", dibuixar);
 
 document.getElementById("Quadrat").addEventListener("click", text);
