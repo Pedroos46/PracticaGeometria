@@ -7,7 +7,7 @@ function dibuixar() {
 
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
-          ctx.fillStyle="black";
+          //ctx.fillStyle="black";
           ctx.strokeStyle="yellow";    
 
         var gradient = ctx.createLinearGradient(10, 90, 200, 90);  
@@ -330,13 +330,6 @@ function ferBN(){
           pixels[i+2]=0;
         }
     }
-    /*
-    for (var i = 0; i < pixels.length; i += 4) {
-    	if(pixels[i]> 127){pixels[i] = 255;}else if((pixels[i]< 127)||(pixels[i]==127)){pixels[i] = 0;}
-    	if(pixels[i+1]> 127){pixels[i+1] = 255;}else if((pixels[i+1]< 127)||(pixels[i+1]==127)){pixels[i+1] = 0;}
-    	if(pixels[i+2]> 127){pixels[i+2] = 255;}else if((pixels[i+2]< 127)||(pixels[i+2]==127)){pixels[i+2] = 0;}
-
-    } */
     context.putImageData(imageData,0,0);
   }
 }
@@ -344,8 +337,7 @@ function ferBN(){
 
 function downloadCanvas() {
   var canvas = document.getElementById('tauler');
-  var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-
+  var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  
 
 window.location.href=image;
 }
