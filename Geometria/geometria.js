@@ -6,9 +6,16 @@ function dibuixar() {
 
 
     if (canvas.getContext) {
-      var   ctx = canvas.getContext('2d');
-      ctx.fillStyle="black";
-      ctx.strokeStyle="yellow";
+        var ctx = canvas.getContext('2d');
+          ctx.fillStyle="black";
+          ctx.strokeStyle="yellow";    
+
+        var gradient = ctx.createLinearGradient(10, 90, 200, 90);  
+        gradient.addColorStop(0, 'red');  
+        gradient.addColorStop(1, 'black');  
+        ctx.fillStyle = gradient; 
+        
+
         pintarCuadrat(ctx);
         pintarTriangle(ctx);
         pintarCercle(ctx);
@@ -136,7 +143,7 @@ function  pintarCercle(ctx){
 
 
   function pintarPentagon(ctx){
-
+  
     ctx.save();
     ctx.translate(60, 1000);
 
@@ -145,9 +152,9 @@ function  pintarCercle(ctx){
     ctx.stroke();
 
     ctx.restore();
+    
 
   }
-
 
 function  pintarHexagon(ctx){
 
@@ -165,10 +172,12 @@ function  pintarHexagon(ctx){
 
   function pintarHeptagon(ctx){
 
+
     ctx.save();
     ctx.translate(60, 1300);
 
     ctx.beginPath();
+
     polygon(ctx, 50,50,50,7,-Math.PI/2);
     ctx.stroke();
 
