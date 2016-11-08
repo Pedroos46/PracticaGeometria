@@ -9,16 +9,10 @@ function dibuixar() {
       var   ctx = canvas.getContext('2d');
       ctx.fillStyle="black";
       ctx.strokeStyle="yellow";
-        
-        var gradient=ctx.createLinearGradient(0,0,canvas.width,0);
-        gradient.addColorStop("0","magenta");
-        gradient.addColorStop("0.5","blue");
-        gradient.addColorStop("1.0","red");
-        
         pintarCuadrat(ctx);
         pintarTriangle(ctx);
         pintarCercle(ctx);
-        pintarRectangle(ctx, canvas);
+        pintarRectangle(ctx);
         pintarTrapezi(ctx);
         pintarRombe(ctx);
         pintarPentagon(ctx);
@@ -90,13 +84,12 @@ function  pintarCercle(ctx){
 
  function pintarRectangle(ctx){
 
-    ctx.save();     
+    ctx.save();
     ctx.translate(5, 500);
 
     ctx.lineWidth="5";
     ctx.rect(50,80,150,80);
     ctx.stroke();
-    ctx.fillStyle=gradient;
     ctx.fill();
 
     ctx.restore();
