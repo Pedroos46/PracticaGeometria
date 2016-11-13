@@ -25,8 +25,6 @@ function dibuixar() {
         pintarPentagon(ctx);
         pintarHexagon(ctx);
         pintarHeptagon(ctx);
-        //pintarTest(ctx);
-
         }
 
 }
@@ -81,7 +79,7 @@ function  pintarCercle(ctx){
     ctx.translate(50, 400);
 
     ctx.moveTo(75+50,75);
-    ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle
+    ctx.arc(75,75,50,0,Math.PI*2,true);
     ctx.stroke();
 
     ctx.restore();
